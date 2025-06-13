@@ -1,0 +1,42 @@
+
+server:
+  error:
+    include-message: ALWAYS
+  port: 8080
+
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/control_maintenance?useSSL=false&serverTimezone=UTC
+    username: root
+    password: Tujad&99
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+
+  jpa:
+   hibernate:
+     ddl-auto: update
+   open-in-view: false
+   show-sql: true
+   properties:
+    hibernate:
+      format_sql: true
+    database: mysql
+
+
+  mvc:
+   pathmatch:
+     matching-strategy: ant_path_matcher
+   throw-exception-if-no-handler-found: true
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+
+logging:
+  level:
+    org:
+      springframework: INFO
+    com:
+      everton: DEBUG
+
