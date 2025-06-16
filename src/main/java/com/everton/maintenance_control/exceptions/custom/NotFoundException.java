@@ -1,4 +1,4 @@
-package com.everton.maintenance_control.exceptions;
+package com.everton.maintenance_control.exceptions.custom;
 
 import lombok.Getter;
 

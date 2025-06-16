@@ -24,9 +24,9 @@ public class ServiceOrder {
     private LocalDateTime openingDate;// data de abertura
     private LocalDateTime closingDate;// data de fechamento
     private String maintenanceType; //Tip (Preventive/Corrective)
-    private String name;//Técnico responsável
-    private LocalDate scheduling;//Data agendada / executada
-    private String problemDescription;//Descrição do problema e solução
+    private String name;
+    private LocalDate scheduling;
+    private String problemDescription;
 
     @Enumerated(EnumType.STRING)
     private StatusServiceOrder status;

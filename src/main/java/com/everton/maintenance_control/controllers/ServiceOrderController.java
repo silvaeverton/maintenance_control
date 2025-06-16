@@ -7,15 +7,18 @@ import com.everton.maintenance_control.model.ServiceOrder;
 import com.everton.maintenance_control.services.ServiceOrderService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Validated
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/serviceOrder")
@@ -27,7 +30,7 @@ public class ServiceOrderController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @Operation(summary = "Criar O.S", description = " Cadastro de O.S no sistema")
-    public ServiceOrder createOrder(@RequestBody RequestServiceOrderDTO dto) {
+    public ServiceOrder createOrder(@Valid @RequestBody RequestServiceOrderDTO dto) {
         return service.createOrder(dto);
     }
 
@@ -48,7 +51,7 @@ public class ServiceOrderController {
     @PutMapping("/{idOrder}")
     @ResponseStatus(HttpStatus.OK)
     @Operation(summary = "Atualizar O.S",description = "Busca O.S por Id e realiza a atualização dos dados")
-    public ServiceOrder updateOrder(@PathVariable("idOrder") Long idOrder,@RequestBody RequestServiceOrderDTO updateOrder) {
+    public ServiceOrder updateOrder(@PathVariable("idOrder") Long idOrder,@Valid @RequestBody RequestServiceOrderDTO updateOrder) {
         return service.updateOrder(idOrder, updateOrder);
     }
 
@@ -89,7 +92,7 @@ public class ServiceOrderController {
 
     @GetMapping("/statusOder")
     @Operation(summary = "Buscar por Status",description = "Buscar O.S pelo status desejado")
-    public List<ResponseServiceOrderDTO> findOrderByStatus(@RequestParam String status) {
+    public List<ResponseServiceOrderDTO> findOrderByStatus(@Valid @RequestParam String status) {
         return service.findOrderByStatus(status);
     }
 

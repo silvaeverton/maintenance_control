@@ -7,6 +7,7 @@ import com.everton.maintenance_control.model.Technician;
 import com.everton.maintenance_control.services.TechnicianService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +25,7 @@ public class TechnicianController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @Operation(summary = "Criar Técnico",description = "Cadastra técnico no sistema")
-    public Technician createTech(@RequestBody TechnicianRequestDTO dto) {
+    public Technician createTech(@Valid @RequestBody TechnicianRequestDTO dto) {
         return service.createTech(dto);
     }
 
@@ -45,7 +46,7 @@ public class TechnicianController {
     @PutMapping("/{idTech}")
     @ResponseStatus(HttpStatus.OK)
     @Operation(summary = "Atualizar técnico",description = "Busca técnico por Id e atualiza os dados")
-    public Technician updateTech(@PathVariable("idTech") Long idTech,@RequestBody TechnicianRequestDTO requestDTO) {
+    public Technician updateTech(@PathVariable("idTech") Long idTech,@Valid @RequestBody TechnicianRequestDTO requestDTO) {
         return service.updateTech(idTech, requestDTO);
     }
 

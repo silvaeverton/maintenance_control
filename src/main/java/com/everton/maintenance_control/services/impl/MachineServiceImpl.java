@@ -3,7 +3,7 @@ package com.everton.maintenance_control.services.impl;
 import com.everton.maintenance_control.dtos.MachineRequestDTO;
 import com.everton.maintenance_control.dtos.MachineResponseDTO;
 import com.everton.maintenance_control.dtos.ResponseServiceOrderDTO;
-import com.everton.maintenance_control.exceptions.NotFoundException;
+import com.everton.maintenance_control.exceptions.custom.NotFoundException;
 import com.everton.maintenance_control.model.Machine;
 import com.everton.maintenance_control.model.ServiceOrder;
 import com.everton.maintenance_control.repositories.MachineRepository;
