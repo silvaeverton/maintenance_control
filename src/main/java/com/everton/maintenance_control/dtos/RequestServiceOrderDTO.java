@@ -3,7 +3,6 @@ package com.everton.maintenance_control.dtos;
 import com.everton.maintenance_control.enums.StatusServiceOrder;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
@@ -32,8 +31,7 @@ public class RequestServiceOrderDTO {
     private String problemDescription;
 
 
-    @Pattern(regexp = "OPEN|IN_PROGRESS|FINISHED|CANCELED",
-            message = "Status inválido. Valores aceitos: OPEN, IN_PROGRESS, FINISHED, CANCELED")
+
     @Schema(example = "OPEN")
     private StatusServiceOrder status;
 

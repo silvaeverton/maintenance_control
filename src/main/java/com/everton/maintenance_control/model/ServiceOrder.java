@@ -31,11 +31,11 @@ public class ServiceOrder {
     @Enumerated(EnumType.STRING)
     private StatusServiceOrder status;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "machine_id")
     private Machine machine;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "technician_id")
     private Technician technician;
 

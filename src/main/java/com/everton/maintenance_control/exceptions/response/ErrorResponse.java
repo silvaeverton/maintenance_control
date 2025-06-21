@@ -18,5 +18,11 @@ public class ErrorResponse {
 
 
     public ErrorResponse(LocalDateTime timestamp, Integer status, String message, String path) {
+
+        this.timestamp = timestamp;
+        this.status = status;
+        this.message = message;
+        this.path = path;
+
     }
 }

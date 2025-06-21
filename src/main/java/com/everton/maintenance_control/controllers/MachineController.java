@@ -7,7 +7,6 @@ import com.everton.maintenance_control.model.Machine;
 import com.everton.maintenance_control.services.MachineService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
@@ -27,7 +26,7 @@ public class MachineController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @Operation(summary = "Cadastrar nova maquina", description = "Criar nova maquina no sistema")
-    public Machine createMachine(@Valid @RequestBody MachineRequestDTO dto) {
+    public Machine createMachine( @RequestBody MachineRequestDTO dto) {
         return machineService.createMachine(dto);
     }
 
@@ -49,7 +48,7 @@ public class MachineController {
     @ResponseStatus(HttpStatus.OK)
     @Operation(summary = "Atualização Maquina", description = "Buscar maquina po id e realiza atualização de dados")
     public Machine updateMachine(@PathVariable("idMachine") Long idMachine,
-                                 @Valid @RequestBody MachineRequestDTO updateMachine) {
+                                  @RequestBody MachineRequestDTO updateMachine) {
 
         return machineService.updateMachine(idMachine, updateMachine);
     }

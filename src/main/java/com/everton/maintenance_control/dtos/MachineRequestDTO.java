@@ -39,8 +39,7 @@ public class MachineRequestDTO {
     @Schema(example = "2024-06-04")
     private LocalDate dateAcquisition;
 
-    @Pattern(regexp = "ACTIVE,INACTIVE",
-            message = "Status inválido. Valores aceitos: ACTIVE, INACTIVE")
+
     @Schema(example = "ACTIVE")
     private StatusMachine statusMachine;
 

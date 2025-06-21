@@ -112,8 +112,7 @@ public class MachineServiceImpl implements MachineService {
                     o.setMaintenanceType(order.getMaintenanceType());
                     o.setProblemDescription(order.getProblemDescription());
                     o.setTechnicianId(o.getTechnicianId());
-                    o.setCreateDate(order.getCreateDate());
-                    o.setScheduling(order.getScheduling());
+                    o.setOpeningDate(order.getOpeningDate());
                     o.setStatus(order.getStatus());
                     return o;
 

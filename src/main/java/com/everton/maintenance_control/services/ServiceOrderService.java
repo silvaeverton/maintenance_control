@@ -20,7 +20,6 @@ public interface ServiceOrderService {
     public void finishService(Long idOrder);
     public void canceledOrder(Long idOrder);
     public List<ResponseServiceOrderDTO> findOrderByStatus(String status);
-    public byte[] generateServiceOrderReport();
-    public byte[] generateServiceOrderPDFById(Long id);
+
 
 }

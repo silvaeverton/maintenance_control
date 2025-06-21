@@ -7,18 +7,13 @@ import com.everton.maintenance_control.model.ServiceOrder;
 import com.everton.maintenance_control.services.ServiceOrderService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Validated
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/serviceOrder")
@@ -30,7 +25,7 @@ public class ServiceOrderController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @Operation(summary = "Criar O.S", description = " Cadastro de O.S no sistema")
-    public ServiceOrder createOrder(@Valid @RequestBody RequestServiceOrderDTO dto) {
+    public ServiceOrder createOrder( @RequestBody RequestServiceOrderDTO dto) {
         return service.createOrder(dto);
     }
 
@@ -51,12 +46,12 @@ public class ServiceOrderController {
     @PutMapping("/{idOrder}")
     @ResponseStatus(HttpStatus.OK)
     @Operation(summary = "Atualizar O.S",description = "Busca O.S por Id e realiza a atualização dos dados")
-    public ServiceOrder updateOrder(@PathVariable("idOrder") Long idOrder,@Valid @RequestBody RequestServiceOrderDTO updateOrder) {
+    public ServiceOrder updateOrder(@PathVariable("idOrder") Long idOrder, @RequestBody RequestServiceOrderDTO updateOrder) {
         return service.updateOrder(idOrder, updateOrder);
     }
 
     @DeleteMapping("/{idOrder}")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     @Operation(summary = "Deletar O.S",description = "Busca O.S por Id e realiza o delete")
     public void deleteOrder(@PathVariable("idOrder") Long idOrder) {
         service.deleteOrder(idOrder);
@@ -90,33 +85,10 @@ public class ServiceOrderController {
         service.canceledOrder(idOrder);
     }
 
-    @GetMapping("/statusOder")
+    @GetMapping("/statusOrder")
     @Operation(summary = "Buscar por Status",description = "Buscar O.S pelo status desejado")
-    public List<ResponseServiceOrderDTO> findOrderByStatus(@Valid @RequestParam String status) {
+    public List<ResponseServiceOrderDTO> findOrderByStatus(  @RequestParam String status) {
         return service.findOrderByStatus(status);
-    }
-
-    @GetMapping("/report")
-    @Operation(summary = "Download O.S em csv",description = "Buscar todos as O.S no banco de dado e exporta csv.")
-    public ResponseEntity<byte[]> downloadReport() {
-
-        byte[] report = service.generateServiceOrderReport();
-        return ResponseEntity.ok()
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=service_orders_report.csv")
-                .contentType(MediaType.APPLICATION_OCTET_STREAM)
-                .body(report);
-    }
-
-    @GetMapping("/serviceOrder/report/pdf/{id}")
-    @Operation(summary = "Download de O.S PDF",description = "Busca a os por id e efetua o download via PDF")
-    public ResponseEntity<byte[]> generatePdfReport(@PathVariable Long id) {
-        byte[] pdfBytes = service.generateServiceOrderPDFById(id);
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_PDF);
-        headers.setContentDispositionFormData("attachment", "report.pdf");
-
-        return new ResponseEntity<>(pdfBytes, headers, HttpStatus.OK);
     }
 
 
