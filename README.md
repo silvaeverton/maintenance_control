@@ -134,10 +134,14 @@ target/site/jacoco/index.html
 | `GET`    | `/machine`                              | Listar todas as máquinas             |
 | `POST`   | `/serviceOrder`                         | Cadastrar nova ordem de serviço      |
 | `PATCH`  | `/serviceOrder/{id}`                    | Iniciar execução de ordem de serviço |
-| `GET`    | `/serviceOrder/order/{idMachine}`       | Listar ordens por máquina            |
+| `GET`    | `/serviceOrder/order/{idMachine}`       | Listar ordens por Maquina            |
+| `GET`    | `/serviceOrder/order/{idTech}`          | Listar ordens por técnico            |
 | `GET`    | `/serviceOrder/statusOrder?status=OPEN` | Listar ordens por status             |
 | `DELETE` | `/serviceOrder/{id}`                    | Deletar ordem de serviço             |
-
+| `POST`   | `/technician`                           | Cadastrar Técnico                    |
+| `PUT`    | `/technician/{id}`                      | Atualizar máquina existente          |
+| `DELETE` | `//technician/{id}`                     | Deletar técnico                      |
+| `GET`    | `//technician`                          | Listar todas as técnicos             |
 
 ## 👨‍💻 Autor
 **Everton Silva**
