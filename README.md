@@ -37,6 +37,8 @@ A **Maintenance Control API** é uma aplicação `RESTful` desenvolvida em Java 
 * JUnit 5
 
 * Mockito
+  
+* H2 para testes de Controller
 
 * MockMvc para testes de Controller
 
