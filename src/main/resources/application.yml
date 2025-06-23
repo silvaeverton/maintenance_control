@@ -7,9 +7,9 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/control_maintenance?useSSL=false&serverTimezone=UTC
-    username: root
-    password: Tujad&99
+    url:  ${MYSQL_URL}
+    username:  ${MYSQL_USER}
+    password:  ${MYSQL_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 
